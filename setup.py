@@ -7,25 +7,24 @@ https://github.com/iamtalhaasghar/yewtube
 python setup.py sdist bdist_wheel
 """
 
-import sys
-import os
+import sys, os
+from datetime import datetime
 
 if sys.version_info < (3,0):
     sys.exit("yewtube requires python 3.")
 
 from setuptools import setup
 
-def get_version_number():
-    f = open("VERSION")
-    version = None
-    for i in f.readlines():
-        if 'version' in i:
-            version = i.split()[-1].strip()
-    return version
-
+# with open("README.md", "r", encoding="utf-8") as fh:
+#     long_description = fh.read()
+    
+# with open("requirements.txt", "r", encoding="utf-8") as fh:
+#     requirements = fh.readlines()
+    
+    
 options = dict(
     name="yewtube",
-    version=get_version_number(),
+    version=datetime.now().strftime('%Y%m%d.%H.%M'),
     description="A Terminal based YouTube player and downloader. No Youtube API key required. Forked from mps-youtube",
     keywords=["video", "music", "audio", "youtube", "stream", "download"],
     author="talha_programmer",
@@ -34,7 +33,7 @@ options = dict(
     download_url="https://github.com/iamtalhaasghar/yewtube/releases",
     packages=['mps_youtube', 'mps_youtube.commands', 'mps_youtube.listview', 'mps_youtube.players'],
     entry_points={'console_scripts': ['yt = mps_youtube:main.main']},
-    install_requires=open('requirements.txt').readlines(),
+    install_requires=['pyreadline','yt-dlp','youtube-search-python', 'pyperclip'],#open('requirements.txt').readlines(),
     classifiers=[
         "Topic :: Utilities",
         "Topic :: Internet :: WWW/HTTP",
@@ -69,8 +68,8 @@ options = dict(
         }
     },
     package_data={"": ["LICENSE", "README.md", "CHANGELOG"]},
-    long_description_content_type='text/markdown',
-    long_description=open("README.md").read()
+    #long_description_content_type='text/markdown',
+    long_description="Will be added soon. Meanwhile check this out https://github.com/iamtalhaasghar/yewtube"
 )
 
 if sys.platform.startswith('linux'):
