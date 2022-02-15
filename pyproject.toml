@@ -59,3 +59,4 @@ yt = 'mps_youtube:main.main'
 
 [tool.poetry.dev-dependencies]
 better-exceptions = "^0.3.3"
+pdbpp = {git = "https://github.com/pdbpp/pdbpp.git"}
