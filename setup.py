@@ -10,8 +10,8 @@ python setup.py sdist bdist_wheel
 import sys, os
 from datetime import datetime
 
-if sys.version_info < (3,0):
-    sys.exit("yewtube requires python 3.")
+if sys.version_info < (3, 6):
+    sys.exit("yewtube requires minimum python 3.6")
 
 from setuptools import setup
 
@@ -24,7 +24,7 @@ from setuptools import setup
     
 options = dict(
     name="yewtube",
-    version=datetime.now().strftime('%Y%m%d.%H.%M'),
+    version=datetime.utcnow().strftime('%y.%m.%d'),
     description="A Terminal based YouTube player and downloader. No Youtube API key required. Forked from mps-youtube",
     keywords=["video", "music", "audio", "youtube", "stream", "download"],
     author="talha_programmer",
@@ -33,7 +33,13 @@ options = dict(
     download_url="https://github.com/iamtalhaasghar/yewtube/releases",
     packages=['mps_youtube', 'mps_youtube.commands', 'mps_youtube.listview', 'mps_youtube.players'],
     entry_points={'console_scripts': ['yt = mps_youtube:main.main']},
-    install_requires=['pyreadline','yt-dlp','youtube-search-python', 'pyperclip'],#open('requirements.txt').readlines(),
+    python_requires='>=3.6',
+    install_requires=[
+        'pyperclip',
+        'pyreadline',
+        'youtube-search-python',
+        'yt-dlp',
+    ],
     classifiers=[
         "Topic :: Utilities",
         "Topic :: Internet :: WWW/HTTP",
