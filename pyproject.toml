@@ -56,3 +56,6 @@ pyreadline3 = {version = "^3.4.1", platform = "win32"}
 
 [tool.poetry.scripts]
 yt = 'mps_youtube:main.main'
+
+[tool.poetry.dev-dependencies]
+better-exceptions = "^0.3.3"
