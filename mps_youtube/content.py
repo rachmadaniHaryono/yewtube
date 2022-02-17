@@ -1,14 +1,14 @@
-import math
 import copy
+import math
 import random
 
-
-from . import g, c, config
-from .util import getxy, fmt_time, uea_pad, yt_datetime, F
+from . import c, config, g
+from .util import F, fmt_time, getxy, uea_pad, yt_datetime
 
 try:
-    import qrcode
     import io
+
+    import qrcode
     HAS_QRCODE = True
 except ImportError:
     HAS_QRCODE = False
@@ -117,12 +117,13 @@ def generate_songlist_display(song=False, zeromsg=None):
         col = (c.r if n % 2 == 0 else c.p) if not song else c.b
         details = {'title': x.title, "length": fmt_time(x.length)}
         details = copy.copy(g.meta[x.ytid]) if have_meta else details
-        otitle = details['title']
-        details['idx'] = "%2d" % (n + 1)
-        details['title'] = uea_pad(columns[1]['size'], otitle)
-        details['category'] = details.get('category') or '-'
-        details['ytid'] = x.ytid
-        line = ''
+        otitle = details["title"]
+        details["idx"] = "%2d" % (n + 1)
+        details["title"] = uea_pad(columns[1]["size"], otitle)
+        # cat = details.get('category') or '-'
+        # details['category'] = 'pafy.get_categoryname(cat)'
+        details["ytid"] = x.ytid
+        line = ""
 
         for z in columns:
             fieldsize, field, direction = z['size'], z['name'], "<" if z['sign'] == "-" else ">"
@@ -204,14 +205,14 @@ def _get_user_columns():
 def logo(col=None, version=""):
     """ Return text logo. """
     col = col if col else random.choice((c.g, c.r, c.y, c.b, c.p, c.w))
-    logo_txt = r"""                      _         _          
-                     | |       | |         
-  _   _  _____      _| |_ _   _| |__   ___ 
+    logo_txt = r"""                      _         _
+                     | |       | |
+  _   _  _____      _| |_ _   _| |__   ___
  | | | |/ _ \ \ /\ / / __| | | | '_ \ / _ \
  | |_| |  __/\ V  V /| |_| |_| | |_) |  __/
   \__, |\___| \_/\_/  \__|\__,_|_.__/ \___|
-   __/ |                                   
-  |___/                                    
+   __/ |
+  |___/
     """
 
     version = " v" + version if version else ""

@@ -7,24 +7,25 @@ https://github.com/iamtalhaasghar/yewtube
 python setup.py sdist bdist_wheel
 """
 
-import sys, os
-from datetime import datetime
+import os
+import sys
 
 if sys.version_info < (3, 6):
     sys.exit("yewtube requires minimum python 3.6")
 
 from setuptools import setup
 
-# with open("README.md", "r", encoding="utf-8") as fh:
-#     long_description = fh.read()
-    
-# with open("requirements.txt", "r", encoding="utf-8") as fh:
-#     requirements = fh.readlines()
-    
-    
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
+
+with open("requirements.txt", "r") as fh:
+    requirements = fh.readlines()
+
+__version__ = "2.6.4"
+
 options = dict(
     name="yewtube",
-    version=datetime.utcnow().strftime('%y.%m.%d'),
+    version=__version__,
     description="A Terminal based YouTube player and downloader. No Youtube API key required. Forked from mps-youtube",
     keywords=["video", "music", "audio", "youtube", "stream", "download"],
     author="talha_programmer",
@@ -34,12 +35,7 @@ options = dict(
     packages=['mps_youtube', 'mps_youtube.commands', 'mps_youtube.listview', 'mps_youtube.players'],
     entry_points={'console_scripts': ['yt = mps_youtube:main.main']},
     python_requires='>=3.6',
-    install_requires=[
-        'pyreadline3 ; platform_system=="Windows"',
-        'pyperclip',
-        'youtube-search-python',
-        'yt-dlp',
-    ],
+    install_requires=requirements,
     classifiers=[
         "Topic :: Utilities",
         "Topic :: Internet :: WWW/HTTP",
@@ -74,8 +70,8 @@ options = dict(
         }
     },
     package_data={"": ["LICENSE", "README.md", "CHANGELOG"]},
-    #long_description_content_type='text/markdown',
-    long_description="Will be added soon. Meanwhile check this out https://github.com/iamtalhaasghar/yewtube"
+    long_description_content_type="text/markdown",
+    long_description=long_description,
 )
 
 if sys.platform.startswith('linux'):
@@ -85,6 +81,7 @@ if sys.platform.startswith('linux'):
 if os.name == "nt":
     try:
         import py2exe
+
         # Only setting these when py2exe imports successfully prevents warnings
         # in easy_install
         options['console'] = ['yt']
