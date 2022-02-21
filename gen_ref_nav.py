@@ -11,10 +11,8 @@ nav = mkdocs_gen_files.Nav()
 skip_files = [
     (Path("mps_youtube") / "config.py"),
     (Path("mps_youtube") / "mpris.py"),
-    (Path("mps_youtube") / "test" / "test_main.py"),
-    (Path("mps_youtube") / "test" / "test_util.py"),
-    (Path("mps_youtube") / "test" / "test_players_mplayer.py"),
 ]
+skip_files.extend((Path("mps_youtube") / "test").glob("*.py"))
 for path in sorted(Path("mps_youtube").glob("**/*.py")):
     if path in skip_files:
         continue
