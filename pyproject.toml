@@ -49,14 +49,23 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.6"
+python = ">=3.7,<4.0"
 pyperclip = "^1.8.2"
 youtube-search-python = "^1.6.2"
 yt-dlp = "^2022.2.4"
 pyreadline3 = {version = "^3.4.1", platform = "win32"}
+dbus-python = {version = "^1.2.18", extras = ["mpris"]}
+PyGObject = {version = "^3.42.0", extras = ["mpris"]}
 
 [tool.poetry.dev-dependencies]
 better-exceptions = "^0.3.3"
+pytest = "^7.0.1"
+mkdocs-gen-files = "^0.3.4"
+mkdocs-literate-nav = "^0.4.1"
+mkdocs-macros-plugin = "^0.6.4"
+mkdocs-material = "^8.2.1"
+mkdocstrings-python-legacy = "^0.2.2"
+mkdocstrings = "^0.18.0"
 
 [tool.poetry.scripts]
 yt = 'mps_youtube:main.main'
