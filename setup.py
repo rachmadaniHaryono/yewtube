@@ -18,7 +18,7 @@ from setuptools import setup
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
-with open('requirements.txt', 'r') as fh:
+with open("requirements.txt", "r") as fh:
     requirements = fh.readlines()
 
 __version__ = "2.7.0"
@@ -40,6 +40,14 @@ options = dict(
         "mpris": [
             "dbus-python>=1.2.18",
             "PyGObject>=3.42.0",
+        ],
+        "docs": [
+            "mkdocs-gen-files>=0.3.4",
+            "mkdocs-literate-nav>=0.4.1",
+            "mkdocs-macros-plugin>=0.6.4",
+            "mkdocs-material>=8.2.1",
+            "mkdocstrings-python-legacy>=0.2.2",
+            "mkdocstrings>=0.18.0",
         ],
     },
     classifiers=[
@@ -76,8 +84,8 @@ options = dict(
         }
     },
     package_data={"": ["LICENSE", "README.md", "CHANGELOG.md"]},
-    long_description_content_type='text/markdown',
-    long_description=long_description
+    long_description_content_type="text/markdown",
+    long_description=long_description,
 )
 
 if sys.platform.startswith('linux'):
