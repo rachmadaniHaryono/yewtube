@@ -2,7 +2,7 @@
 
 [tool.poetry]
 name = "yewtube"
-version = "1.1.4"
+version = "2.7.0"
 description = "A Terminal based YouTube player and downloader. No Youtube API key required. Forked from mps-youtube"
 license = "GPLv3"
 keywords = [
