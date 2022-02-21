@@ -36,6 +36,20 @@ options = dict(
     entry_points={'console_scripts': ['yt = mps_youtube:main.main']},
     python_requires='>=3.6',
     install_requires=requirements,
+    extras_require={
+        "mpris": [
+            "dbus-python>=1.2.18",
+            "PyGObject>=3.42.0",
+        ],
+        "docs": [
+            "mkdocs-gen-files>=0.3.4",
+            "mkdocs-literate-nav>=0.4.1",
+            "mkdocs-macros-plugin>=0.6.4",
+            "mkdocs-material>=8.2.1",
+            "mkdocstrings-python-legacy>=0.2.2",
+            "mkdocstrings>=0.18.0",
+        ],
+    },
     classifiers=[
         "Topic :: Utilities",
         "Topic :: Internet :: WWW/HTTP",
