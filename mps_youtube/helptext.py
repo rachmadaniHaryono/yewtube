@@ -3,7 +3,9 @@
 """
 from . import c, g
 from .util import get_near_name, F
-
+from urllib.request import urlopen
+from urllib.error import HTTPError, URLError
+import socket, re
 
 def helptext():
     """ Return a list of help categories, with their contents. """
@@ -242,7 +244,6 @@ def helptext():
     {2}set window_size <number>x<number>{1} - set player window width & height
     {2}set audio_format <auto|m4a|webm>{1} - set default music audio format
     {2}set video_format <auto|mp4|webm|3gp>{1} - set default music video format
-    {2}set api_key <key>{1} - use a different API key for accessing the YouTube Data API
     {2}set set_title true|false{1} - change window title
     {2}set show_qrcode true|false{1} - show qrcode of the URL in the video information panel
     {2}set history true|false{1} - record play history
@@ -304,20 +305,8 @@ def helptext():
 
     Use {2}clearcache{1} command to clear the cache.
     """.format(c.ul, c.w, c.y)),
-
-        ("new", "New Features", """
-    {0}New Features in v0.2.7{1}
-
-     - Setting for default audio format (nishanthkarthik)
-
-     - Search history with "history" command (kraetzin)
-
-     - Add syntax for repeating a track several times (ghallak)
-
-     - New "reverse" command (kraetzin)
-
-     - New "daurl <url>" command (maricn)
-    """.format(c.ul, c.w, c.y))]
+    ("new", "New Features", """{0}What's New{1}\n{3}""".format(c.ul, c.w, c.y, get_changelog())),
+    ("tor", "Check Tor Status. NOTE: Use this feature at your own risk. In case of any kind of damage we will not be responsible.", """{0}Tor Status{1}\n{3}""".format(c.ul, c.w, c.y, check_tor()))]
 
 
 def get_help(choice):
@@ -385,3 +374,24 @@ def get_help(choice):
     else:
         choice = help_names.index(choice)
         return indent(all_help[choice][2])
+
+def get_changelog():
+    try:
+        url = "https://raw.githubusercontent.com/iamtalhaasghar/yewtube/master/CHANGELOG.md"
+        v = urlopen(url, timeout=1).read().decode()
+        v = v.split('## v')[1]
+        return v
+    except (URLError, HTTPError, socket.timeout):
+        return "read changelog timed out"
+
+def check_tor():
+    try:
+        url = "https://check.torproject.org/?lang=en"
+        v = urlopen(url, timeout=1).read().decode()
+        ip = re.findall('<strong>(.*)</strong>', v)
+        status = re.findall('Congratulations.(.*)', v)
+        if len(status) == 0:
+            status = re.findall('Sorry.(.*)', v)
+        return {'ip' : ip, 'status': status[0]}
+    except (URLError, HTTPError, socket.timeout):
+        return "read changelog timed out"
