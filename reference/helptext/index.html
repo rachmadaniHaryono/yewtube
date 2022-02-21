@@ -1290,6 +1290,7 @@
 
 
 
+
   <div class="doc doc-object doc-function">
 
 
@@ -1632,7 +1633,6 @@
 <span class="s2">    </span><span class="si">{2}</span><span class="s2">set window_size &lt;number&gt;x&lt;number&gt;</span><span class="si">{1}</span><span class="s2"> - set player window width &amp; height</span>
 <span class="s2">    </span><span class="si">{2}</span><span class="s2">set audio_format &lt;auto|m4a|webm&gt;</span><span class="si">{1}</span><span class="s2"> - set default music audio format</span>
 <span class="s2">    </span><span class="si">{2}</span><span class="s2">set video_format &lt;auto|mp4|webm|3gp&gt;</span><span class="si">{1}</span><span class="s2"> - set default music video format</span>
-<span class="s2">    </span><span class="si">{2}</span><span class="s2">set api_key &lt;key&gt;</span><span class="si">{1}</span><span class="s2"> - use a different API key for accessing the YouTube Data API</span>
 <span class="s2">    </span><span class="si">{2}</span><span class="s2">set set_title true|false</span><span class="si">{1}</span><span class="s2"> - change window title</span>
 <span class="s2">    </span><span class="si">{2}</span><span class="s2">set show_qrcode true|false</span><span class="si">{1}</span><span class="s2"> - show qrcode of the URL in the video information panel</span>
 <span class="s2">    </span><span class="si">{2}</span><span class="s2">set history true|false</span><span class="si">{1}</span><span class="s2"> - record play history</span>
@@ -1694,8 +1694,8 @@
 
 <span class="s2">    Use </span><span class="si">{2}</span><span class="s2">clearcache</span><span class="si">{1}</span><span class="s2"> command to clear the cache.</span>
 <span class="s2">    &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">ul</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">y</span><span class="p">)),</span>
-
-        <span class="p">(</span><span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="s2">&quot;New Features&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;&quot;</span><span class="si">{0}</span><span class="s2">What&#39;s New</span><span class="si">{1}</span><span class="se">\n</span><span class="si">{3}</span><span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">ul</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">get_changelog</span><span class="p">()))]</span>
+    <span class="p">(</span><span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="s2">&quot;New Features&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;&quot;</span><span class="si">{0}</span><span class="s2">What&#39;s New</span><span class="si">{1}</span><span class="se">\n</span><span class="si">{3}</span><span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">ul</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">get_changelog</span><span class="p">())),</span>
+    <span class="p">(</span><span class="s2">&quot;tor&quot;</span><span class="p">,</span> <span class="s2">&quot;Check Tor Status. NOTE: Use this feature at your own risk. In case of any kind of damage we will not be responsible.&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;&quot;</span><span class="si">{0}</span><span class="s2">Tor Status</span><span class="si">{1}</span><span class="se">\n</span><span class="si">{3}</span><span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">ul</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">check_tor</span><span class="p">()))]</span>
 </code></pre></div>
         </details>
     </div>
