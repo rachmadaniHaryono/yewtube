@@ -1,18 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""import have to be inside function so ci don't need to import it if not installed"""
 from unittest.mock import MagicMock
 
-import dbus
 import pytest
-
-from mps_youtube import mpris
 
 
 def test_mprsi2controller_init():
+    from mps_youtube import mpris
     assert mpris.Mpris2Controller()
 
 
 def test_mpris2mediaplayer_init():
+    import dbus
+
+    from mps_youtube import mpris
     bus = MagicMock()
     obj = mpris.Mpris2MediaPlayer(bus)
     assert obj
@@ -70,6 +72,9 @@ def test_mpris2mediaplayer_init():
 
 @pytest.mark.parametrize("val", (None, 0, 3, 5))
 def test_mpris2mediaplayer_set_property_time_pos(val):
+    import dbus
+
+    from mps_youtube import mpris
     obj = mpris.Mpris2MediaPlayer(MagicMock())
     obj.Seeked = MagicMock()
     obj.setproperty("time-pos", val)
@@ -96,6 +101,9 @@ def test_mpris2mediaplayer_set_property_time_pos(val):
     ),
 )
 def test_mpris2mediaplayer_set_property_time_pos_seeked(val1, val2):
+    import dbus
+
+    from mps_youtube import mpris
     obj = mpris.Mpris2MediaPlayer(MagicMock())
     obj.Seeked = MagicMock()
     obj.setproperty("time-pos", val1)
