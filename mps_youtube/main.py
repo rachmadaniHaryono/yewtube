@@ -20,12 +20,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 """
 
-import traceback as traceback_py
 import locale
-import sys
 import os
+import sys
+import traceback as traceback_py
 
-from . import util
+from . import init, util
 
 completer = None
 try:
@@ -40,9 +40,18 @@ try:
 except ImportError:
     has_readline = False
 
-from . import g, c, commands, screen, history
-from . import __version__, playlists, content, listview
-from . import config
+from . import (
+    __version__,
+    c,
+    commands,
+    config,
+    content,
+    g,
+    history,
+    listview,
+    playlists,
+    screen,
+)
 
 mswin = os.name == "nt"
 
@@ -112,6 +121,7 @@ def prompt_for_exit():
 
 def main():
     """ Main control loop. """
+    init.init()
     if config.SET_TITLE.get:
         util.set_window_title("yewtube")
 
