@@ -950,8 +950,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mps_youtube.pafy.video_search" class="md-nav__link">
-    video_search()
+  <a href="#mps_youtube.pafy.search_videos" class="md-nav__link">
+    search_videos()
   </a>
   
 </li>
@@ -1315,8 +1315,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mps_youtube.pafy.video_search" class="md-nav__link">
-    video_search()
+  <a href="#mps_youtube.pafy.search_videos" class="md-nav__link">
+    search_videos()
   </a>
   
 </li>
@@ -1577,16 +1577,15 @@
 
 
 
-
   <div class="doc doc-object doc-function">
 
 
 
-<h2 id="mps_youtube.pafy.video_search" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">video_search</span><span class="p">(</span><span class="n">query</span><span class="p">)</span></code>
+<h2 id="mps_youtube.pafy.search_videos" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">search_videos</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">pages</span><span class="p">)</span></code>
 
 
-<a href="#mps_youtube.pafy.video_search" class="headerlink" title="Permanent link">&para;</a></h2>
+<a href="#mps_youtube.pafy.search_videos" class="headerlink" title="Permanent link">&para;</a></h2>
 
     <div class="doc doc-contents ">
 
@@ -1594,7 +1593,7 @@
 
         <details class="quote">
           <summary>Source code in <code>mps_youtube/pafy.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">video_search</span><span class="p">(</span><span class="n">query</span><span class="p">):</span>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">search_videos</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">pages</span><span class="p">):</span>
 
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Given a keyword / query this function will return youtube video results against those keywords / query</span>
@@ -1602,12 +1601,16 @@
 
     <span class="n">videosSearch</span> <span class="o">=</span> <span class="n">VideosSearch</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
     <span class="n">wdata</span> <span class="o">=</span> <span class="n">videosSearch</span><span class="o">.</span><span class="n">result</span><span class="p">()[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">pages</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">videosSearch</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+        <span class="n">wdata</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">videosSearch</span><span class="o">.</span><span class="n">result</span><span class="p">()[</span><span class="s1">&#39;result&#39;</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">wdata</span>
 </code></pre></div>
         </details>
     </div>
 
   </div>
+
 
 
 

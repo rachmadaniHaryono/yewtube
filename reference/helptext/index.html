@@ -1291,6 +1291,7 @@
 
 
 
+
   <div class="doc doc-object doc-function">
 
 
@@ -1374,6 +1375,8 @@
             <span class="n">output_text</span> <span class="o">=</span> <span class="n">check_tor</span><span class="p">()</span>
         <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s1">&#39;new&#39;</span><span class="p">:</span>
             <span class="n">output_text</span> <span class="o">=</span> <span class="n">get_changelog</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;changelog&quot;</span><span class="p">:</span>
+            <span class="n">output_text</span> <span class="o">=</span> <span class="n">get_changelog_local</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">choice</span> <span class="o">=</span> <span class="n">help_names</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">choice</span><span class="p">)</span>
             <span class="n">output_text</span> <span class="o">=</span> <span class="n">all_help</span><span class="p">[</span><span class="n">choice</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
@@ -1423,8 +1426,8 @@
 <span class="s2">        </span><span class="si">{2}</span><span class="s2">d &lt;number&gt;</span><span class="si">{1}</span><span class="s2"> - download video &lt;number&gt;</span>
 <span class="s2">        </span><span class="si">{2}</span><span class="s2">r &lt;number&gt;</span><span class="si">{1}</span><span class="s2"> - show videos related to video &lt;number&gt;</span>
 <span class="s2">        </span><span class="si">{2}</span><span class="s2">u &lt;number&gt;</span><span class="si">{1}</span><span class="s2"> - show videos uploaded by uploader of video &lt;number&gt;</span>
-<span class="s2">        </span><span class="si">{2}</span><span class="s2">x &lt;number&gt;</span><span class="si">{1}</span><span class="s2"> - copy item &lt;number&gt; url to clipboard. (See the note below) </span>
-<span class="s2">        Note: This feature requires `pyperclip` which is installed automatically when you install yewtube but </span>
+<span class="s2">        </span><span class="si">{2}</span><span class="s2">x &lt;number&gt;</span><span class="si">{1}</span><span class="s2"> - copy item &lt;number&gt; url to clipboard. (See the note below)</span>
+<span class="s2">        Note: This feature requires `pyperclip` which is installed automatically when you install yewtube but</span>
 <span class="s2">        Linux users further need to install `xsel` or `xclip` manually using apt, dnf, pacman, zypper or whatever package manager you use.</span>
 <span class="s2">        Visit https://pyperclip.readthedocs.io/en/latest/index.html#not-implemented-error for more info.</span>
 
@@ -1452,7 +1455,7 @@
 
 <span class="s2">    </span><span class="si">{2}</span><span class="s2">album &lt;album title&gt;</span><span class="si">{1}</span><span class="s2"> - Search for matching tracks using album title</span>
 <span class="s2">    </span><span class="si">{2}</span><span class="s2">channels &lt;Channel name&gt;</span><span class="si">{1}</span><span class="s2"> - Search for channels by channelname</span>
-<span class="s2">    </span><span class="si">{2}</span><span class="s2">live &lt;category&gt;</span><span class="si">{1}</span><span class="s2"> - Search for livestreams from a range of categories. </span>
+<span class="s2">    </span><span class="si">{2}</span><span class="s2">live &lt;category&gt;</span><span class="si">{1}</span><span class="s2"> - Search for livestreams from a range of categories.</span>
 <span class="s2">    Categories: </span><span class="si">{2}{3}{1}</span><span class="s2"></span>
 
 <span class="s2">    </span><span class="si">{2}</span><span class="s2">mkp &lt;fullfilepath&gt;</span><span class="si">{1}</span><span class="s2"> - Creates a playlist automatically with video titles from fullfilepath</span>
@@ -1700,9 +1703,26 @@
 <span class="s2">    command</span>
 
 <span class="s2">    Use </span><span class="si">{2}</span><span class="s2">clearcache</span><span class="si">{1}</span><span class="s2"> command to clear the cache.</span>
-<span class="s2">    &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">ul</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">y</span><span class="p">)),</span>
-    <span class="p">(</span><span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="s2">&quot;Check if new version is available&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;&quot;</span><span class="si">{0}</span><span class="s2">What&#39;s New</span><span class="si">{1}</span><span class="se">\n</span><span class="si">{3}</span><span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">ul</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="s2">&quot;get_changelog()&quot;</span><span class="p">)),</span>
-    <span class="p">(</span><span class="s2">&quot;tor&quot;</span><span class="p">,</span> <span class="s2">&quot;Check Tor Status. NOTE: Use this feature at your own risk. In case of any kind of damage we will not be responsible.&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;&quot;</span><span class="si">{0}</span><span class="s2">Tor Status</span><span class="si">{1}</span><span class="se">\n</span><span class="si">{3}</span><span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">ul</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="s2">&quot;check_tor()&quot;</span><span class="p">))]</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">c</span><span class="o">.</span><span class="n">ul</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">y</span>
+            <span class="p">),</span>
+        <span class="p">),</span>
+        <span class="p">(</span>
+            <span class="s2">&quot;new&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Check if new version is available&quot;</span><span class="p">,</span>
+            <span class="sd">&quot;&quot;&quot;{0}What&#39;s New{1}\n{3}&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">ul</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="s2">&quot;get_changelog()&quot;</span><span class="p">),</span>
+        <span class="p">),</span>
+        <span class="p">(</span>
+            <span class="s2">&quot;changelog&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Check program changelog&quot;</span><span class="p">,</span>
+            <span class="sd">&quot;&quot;&quot;{0}Changelog{1}\n{3}&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">ul</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="s2">&quot;get_changelog_local()&quot;</span><span class="p">),</span>
+        <span class="p">),</span>
+        <span class="p">(</span>
+            <span class="s2">&quot;tor&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Check Tor Status. NOTE: Use this feature at your own risk. In case of any kind of damage we will not be responsible.&quot;</span><span class="p">,</span>
+            <span class="sd">&quot;&quot;&quot;{0}Tor Status{1}\n{3}&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">ul</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="s2">&quot;check_tor()&quot;</span><span class="p">),</span>
+        <span class="p">),</span>
+    <span class="p">]</span>
 </code></pre></div>
         </details>
     </div>
