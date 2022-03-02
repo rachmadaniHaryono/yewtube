@@ -19,7 +19,9 @@ from .playlist import Video
 macos = platform.system() == "Darwin"
 
 mswin = os.name == "nt"
-not_utf8_environment = mswin or "UTF-8" not in sys.stdout.encoding
+not_utf8_environment = mswin or (
+    "UTF-8" not in sys.stdout.encoding if sys.stdout.encoding else False
+)
 
 XYTuple = collections.namedtuple('XYTuple', 'width height max_results')
 

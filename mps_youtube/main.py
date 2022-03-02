@@ -48,6 +48,7 @@ from . import (
     content,
     g,
     history,
+    init,
     listview,
     playlists,
     screen,
